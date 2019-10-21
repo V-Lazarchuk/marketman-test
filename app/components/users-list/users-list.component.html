@@ -1,0 +1,29 @@
+<div class="users-list">
+    <h4 class="users-list__heading">{{title}}</h4>
+</div>
+<div class="users-table">
+    <table class="users-table__table">
+        <thead>
+        <tr>
+            <th data-table-role="firstName">First Name</th>
+            <th data-table-role="lastName">Last Name</th>
+            <th data-table-role="email">Email</th>
+            <th data-table-role="country">Country</th>
+            <th data-table-role="pone">Phone</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users">
+            <td data-table-role="firstName">{{user.name.first}}</td>
+            <td data-table-role="lastName">{{user.name.last}}</td>
+            <td data-table-role="email">{{user.email}}</td>
+            <td data-table-role="country">{{user.location.country}}</td>
+            <td data-table-role="pone">{{user.phone}}</td>
+            <td data-table-role="action">delete</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<pagination></pagination>
