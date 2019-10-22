@@ -1,0 +1,72 @@
+<div class="userInfo">
+    <div class="userInfo__back">
+        <button class="userInfo__button"
+                ng-click="goBack()"> &larr; Back to List
+        </button>
+    </div>
+    <div class="userInfo__header">
+        <div class="userInfo__photo">
+            <img src="{{user.picture.large}}"
+                 alt="Photo">
+        </div>
+        <div class="userInfo__buttons">
+            <button class="userInfo__button"
+                    ng-if="mode === 'display'"
+                    ng-click="changeMode('edit')">
+                Edit
+            </button>
+            <button class="userInfo__button"
+                    ng-if="mode === 'edit'"
+                    ng-click="changeUser()">
+                Save
+            </button>
+            <button class="userInfo__button"
+                    ng-if="mode === 'display'"
+                    ng-click="deleteUser()">
+                Delete
+            </button>
+        </div>
+    </div>
+    <div ng-if="mode === 'display'">
+        <div class="userInfo__name">
+            <p ng-if="mode === 'display'">
+                {{user.name.first}} {{user.name.last}}
+            </p>
+            <p ng-if="mode === 'edit'">
+                <input type="text"
+                       class="userInfo__input"
+                       ng-model="user.name.first">
+                <input type="text"
+                       class="userInfo__input"
+                       ng-model="user.name.last">
+            </p>
+        </div>
+        <div class="userInfo__email">
+            <a href="mailto: {{user.email}}">{{user.email}}</a>
+        </div>
+        <div class="userInfo__phone">{{user.phone}}</div>
+        <div class="userInfo__country">{{user.location.country}}</div>
+    </div>
+    <div class="userInfo__form" ng-if="mode === 'edit'">
+        <div class="userInfo__input">
+            <label>First name:</label>
+            <input type="text" ng-model="user.name.first">
+        </div>
+        <div class="userInfo__input">
+            <label>Last name:</label>
+            <input type="text" ng-model="user.name.last">
+        </div>
+        <div class="userInfo__input">
+            <label>Email:</label>
+            <input type="text" ng-model="user.email">
+        </div>
+        <div class="userInfo__input">
+            <label>Phone:</label>
+            <input type="text" ng-model="user.phone">
+        </div>
+        <div class="userInfo__input">
+            <label>Contry:</label>
+            <input type="text" ng-model="user.location.country">
+        </div>
+    </div>
+</div>

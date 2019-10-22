@@ -5,22 +5,22 @@
     <table class="users-table__table">
         <thead>
         <tr>
-            <th data-table-role="firstName">First Name</th>
-            <th data-table-role="lastName">Last Name</th>
-            <th data-table-role="email">Email</th>
-            <th data-table-role="country">Country</th>
-            <th data-table-role="pone">Phone</th>
+            <th data-table-role="firstName" ng-click="addOrder('name.first')">First Name</th>
+            <th data-table-role="lastName" ng-click="addOrder('name.last')">Last Name</th>
+            <th data-table-role="email" ng-click="addOrder('email')">Email</th>
+            <th data-table-role="country" ng-click="addOrder('location.country')">Country</th>
+            <th data-table-role="pone"ng-click="addOrder('phone')">Phone</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="user in users">
+        <tr ng-repeat="user in users | orderBy: order" ng-click="goToUser(user.login.uuid)">
             <td data-table-role="firstName">{{user.name.first}}</td>
             <td data-table-role="lastName">{{user.name.last}}</td>
             <td data-table-role="email">{{user.email}}</td>
             <td data-table-role="country">{{user.location.country}}</td>
             <td data-table-role="pone">{{user.phone}}</td>
-            <td data-table-role="action">delete</td>
+            <td data-table-role="action" ng-click="deleteUser(user.login.uuid, $event)">delete</td>
         </tr>
         </tbody>
     </table>

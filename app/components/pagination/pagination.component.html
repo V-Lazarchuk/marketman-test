@@ -1,1 +1,10 @@
-<h4>pagination</h4>
+<div class="pagination">
+    <button class="pagination__button" ng-click="goToPreviousPage()"><</button>
+    <button class="pagination__button"
+            ng-repeat="page in pages track by $index"
+            ng-class="{'active': $index + 1 === activePage}"
+            ng-click="changePage($index + 1)">
+        {{$index + 1}}
+    </button>
+    <button class="pagination__button" ng-click="goToNextPage()">></button>
+</div>
