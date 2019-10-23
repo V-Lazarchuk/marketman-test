@@ -3,7 +3,7 @@
 angular.module('userManagement')
     .component('userDetails', {
         templateUrl: 'components/user-details/user-details.component.html',
-        controller: ['$scope', '$routeParams', 'Users', '$location', UserDetailsController]
+        controller: UserDetailsController
     });
 
 function UserDetailsController($scope, $routeParams, Users, $location) {
@@ -20,6 +20,9 @@ function UserDetailsController($scope, $routeParams, Users, $location) {
     };
 
     $scope.changeUser = () => {
+        var name = $scope.user.fullname.split(' ');
+        $scope.user.name.first = name[0];
+        $scope.user.name.last = name[1];
         Users.saveUser($scope.user);
         $scope.changeMode('display');
     };
@@ -32,6 +35,7 @@ function UserDetailsController($scope, $routeParams, Users, $location) {
     /*Init Actions*/
     Users.getUser($routeParams.userId).then(user => {
         $scope.user = user;
+        $scope.user.fullname = user.name.first + ' ' + user.name.last;
         $scope.$apply();
     });
 }

@@ -3,7 +3,7 @@
 angular.module('userManagement')
     .component('pagination', {
         templateUrl: 'components/pagination/pagination.component.html',
-        controller: ['Users', '$scope', '$rootScope', PaginationComponentController]
+        controller: PaginationComponentController
     });
 
 function PaginationComponentController(Users, $scope, $rootScope) {
@@ -12,7 +12,6 @@ function PaginationComponentController(Users, $scope, $rootScope) {
 
     /*Methods*/
     $scope.changePage = (num) => {
-        Users.clearUsers();
         Users.setCurrentPage(num);
         $scope.activePage = num;
         $rootScope.$broadcast('pageChanged');

@@ -3,7 +3,7 @@
 angular.module('userManagement')
     .component('usersList', {
         templateUrl: 'components/users-list/users-list.component.html',
-        controller: ['Users', '$scope', '$location', UsersListController]
+        controller: UsersListController
     });
 
 function UsersListController(Users, $scope, $location) {
@@ -30,11 +30,11 @@ function UsersListController(Users, $scope, $location) {
     };
 
     $scope.addOrder = (condition) => {
-         if ($scope.order === condition) {
-             $scope.order = '-' + condition;
-         } else {
+        if ($scope.order === condition) {
+            $scope.order = '-' + condition;
+        } else {
             $scope.order = condition;
-         }
+        }
     };
 
     /*Init Actions*/
